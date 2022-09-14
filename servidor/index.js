@@ -48,7 +48,7 @@ app.get('/usuarios', async function(req, res){
 app.get("/usuarios/:id", async function(req, res) {
   var resultado = await usuario.findByPk(req.params.id);
 
-  res.json(resultado);
+  res.render('retornaUsuario', {resultado});
 });
 
 app.get('/cadastrar', async function(req, res){
