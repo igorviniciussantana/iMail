@@ -41,12 +41,12 @@ const eye = document.querySelector("#view");
 
 if(visivel){
   eye.textContent = "visibility";
-  senha.style.cssText = 'filter: blur(4px)'
+  senha.style.cssText = 'filter: blur(4px); transition: 500ms;'
   visivel = false
 
 }else{
   eye.textContent = "visibility_off";
-  senha.style.cssText = 'filter: blur(0px)'
+  senha.style.cssText = 'filter: blur(0px); transition: 500ms;'
   visivel = true
 }
 
