@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
-  <title>Document</title>
-</head>
-<body>
-  <form action="/logar" method="post">
-    <label for="usuario"></label>
-    <input type="text" name="usuario" id="usuario">
-    <label for="senha"></label>
-    <input type="text" name="senha" id="senha">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+    <title>Autenticar | iMail</title>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <form action="/logar" autocomplete="off" method="post">
+      <h1>Fazer Login</h1>
 
-    <input type="submit" value="Logar">
-  </form>
-</body>
+      <label for="usuario"
+        >Username
+        <div class="username">
+          <span class="material-symbols-outlined"> person </span>
+          <input
+            type="text"
+            name="usuario"
+            id="usuario"
+            placeholder="Insira seu usuário"
+            onfocus="focused('user')"
+          /></div
+      ></label>
+
+      <label for="senha"
+        >Senha
+
+        <div class="password">
+          <span class="material-symbols-outlined"> lock </span>
+          <input
+            type="password"
+            name="senha"
+            id="senha"
+            placeholder="Insira sua senha"
+            onfocus="focused('pass')"
+          />
+          <span
+            onclick="verSenha()"
+            class="material-symbols-outlined"
+            id="view"
+           
+          >
+            visibility
+          </span>
+        </div></label
+      >
+
+      <input type="submit" value="Entrar" />
+    </form>
+
+    <div class="logos">
+<img src="images/discord.svg" alt="Discord Logo">
+<img src="images/twitter.svg" alt="Twitter Logo">
+<img src="images/github.svg" alt="Github Logo">
+<img src="images/instagram.svg" alt="Instagram Logo">
+
+    </div>
+  </body>
 </html>

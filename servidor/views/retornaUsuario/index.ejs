@@ -4,13 +4,56 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
-  <title>Document</title>
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/css/retornaUsuario.css">
+  <script src="/js/main.js"></script>
+  <link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+/>
+  <title><%= resultado.usuario %> | iMail</title>
 </head>
 <body>
-    <%= resultado.usuario %>
-    <%= resultado.nome %>
-    <%= resultado.senha %>
-       
+
+
+  <nav><a href="/"> <h1>Início</h1></a></nav>
+
+  <div class="usuario">
+    <div class="linha1">
+    <img src="/images/user_icon.svg" alt="Usuário">
+    <h1><%= resultado.usuario %></h1>
+  </div>
+
+  <div class="linha2">
+    <div class="item">
+  <h2>Criado em:</h2>
+    <%= resultado.createdAt.toString().slice(0,10) %>
+</div>
+
+<div class="item">
+    <h2>Última atualização:</h2>
+    <%= resultado.updatedAt.toString().slice(0,10) %>
+    </div>
+  </div>
+
+  <div class="dados">
+    <h2>Username</h2>
+    <div class="username">
+    <%= resultado.nome %></div>
+  </div>
+  <div class="dados">
+    <h2>Senha</h2>
+    <div class="senha">
+    <span class="senhaValue"><%= resultado.senha %></span>
+    <span
+            onclick="mostrarSenha()"
+            class="material-symbols-outlined"
+            id="view"
+           
+          >
+            visibility
+          </span></div>
+  </div>
+       </div>
 </body>
 </html>

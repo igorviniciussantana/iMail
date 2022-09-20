@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@media screen and (min-width: 800px) {
+  form{
+
+min-width: 35%;
+
+  }
+
+  .container{
+
+    padding: 20px 30px;
+    
+    
+    }
+}
+@media screen and (max-width: 800px) {
+.container{
+
+padding: 10px 5px;
+
+
+}
+  form{
+
+width: 100%;
+
+  }
+
+
+  img{
+
+    display: none;
+  }
+}
+
+
+
+
+*{
+
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+color: #E1E1E6;
+font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #121214;
+  display: flex;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+.container{
+
+display: flex;
+background-color: #202024;
+border-radius: 8px;
+align-items: center;
+justify-content: space-between;
+
+}
+
+img{
+
+border-right: 2px solid #54545A;
+width: 25vw;
+padding: 0 40px 0 0;
+
+}
+form{
+display: flex;
+align-items: center;
+flex-direction: column;
+flex-wrap: wrap;
+padding: 30px 20px;
+
+row-gap: 20px;
+
+border-radius: 8px;
+
+}
+
+form label{
+  width: 100%;
+  font-size: 1.7rem
+
+}
+
+
+.username, .password, .nome{
+  display: flex;
+  align-items: center;
+background-color: #121214;
+border: none;
+padding: 14px 8px;
+border-radius: 4px;
+column-gap: 10px;
+}
+
+.username span, .password span, .nome span{
+
+
+
+  color: #202024;
+}
+
+.username input::placeholder, .password input::placeholder, .nome input::placeholder{
+
+  color: #202024;
+
+}
+
+form input[type='text'],input[type='password']{
+
+background: transparent;
+border: none;
+width: 100%;
+font-size: 1.3rem;
+
+
+
+
+}
+span{
+
+  -webkit-touch-callout: none;  /* iPhone OS, Safari */
+  -webkit-user-select: none;    /* Chrome, Safari 3 */
+  -khtml-user-select: none;     /* Safari 2 */
+  -moz-user-select: none;       /* Firefox */
+  -ms-user-select: none;        /* IE10+ */
+  user-select: none;
+
+
+}
+#view{
+    
+  color: #8257E5;
+  cursor: pointer;
+  transition: 500ms;
+
+}
+
+#view:hover{
+
+color:#9770f1;
+transition: 500ms;
+
+}
+
+form input[type='text']:focus, input[type='password']:focus {
+outline: none;
+  
+  
+  
+  }
+
+  form input[type='submit']{
+
+background-color: #8257E5;
+border: 0;
+width: 100%;
+font-size: 2rem;
+border-radius: 4px;
+
+
+  }
+
+  .logos{
+min-width: 30%;
+display: flex;
+justify-content: center;
+column-gap: 10px;
+
+
+  }
+
+  .logos img{
+
+max-width: 12%;
+
+  }

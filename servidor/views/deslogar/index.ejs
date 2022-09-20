@@ -6,17 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/favicon.png" type="image/png">
   <link rel="stylesheet" href="/css/login.css">
-
-  <title>Login | iMail</title>
+  <title>Deslogar | iMail</title>
 </head>
 <body>
- 
-        <h1>Seja Bem Vindo <span class="user"><%= nome %></span></h1>
-        <a href="/usuarios"><button>Ver Usuários</button></a>
-        <a href="/cadastrar"><button>Cadastro</button></a>
-        <form action="/deslogar" method="post">
-            <input type="submit" value="Deslogar">
-          </form>
+ <h1>Você foi deslogado com sucesso.</h1>
+
+  <a href="/autenticar"><button>Fazer Login</button></a>
     
 
 </body>
