@@ -64,7 +64,7 @@ Inicie o servidor
 Por fim, acesse a rota `/admin` para cadastrar o usuário admin no seu banco.
 Com ele você pode cadastrar outro usuários.
 
-## Design da Interface
+## Protótipo
 🖥 - [iMail - Figma](https://www.figma.com/file/bskiksJ9hAyymGB2SIqfJh/i-Mail?node-id=0%3A1)
 ## Autores
 
