@@ -73,5 +73,5 @@ Com ele você pode cadastrar outro usuários.
 [@igorviniciussantana](https://www.github.com/igorviniciussantana)
 
 [![Linkedin Badge](https://img.shields.io/badge/-Igor-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/igorviniciussantana/)](https://www.linkedin.com/in/igorviniciussantana/)
-[![Gmail Badge](https://img.shields.io/badge/-igor.santana@estudante.ifms.edu.br-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:igor.santana@estudante.ifms.edu.br)](mailto:igor.santana@estudante.ifms.edu.br)
+[![Gmail Badge](https://img.shields.io/badge/-Igor-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:igor.santana@estudante.ifms.edu.br)](mailto:igor.santana@estudante.ifms.edu.br)
 
