@@ -11,6 +11,9 @@ seus dados.
 
  A aplicação foi desenvolvida com base no projeto disponibilizado pelo professor [Luiz Picolo](https://github.com/luizpicolo).
 
+## Protótipo
+🖥 - [iMail - Figma](https://www.figma.com/file/bskiksJ9hAyymGB2SIqfJh/i-Mail?node-id=0%3A1)
+
 ## Rodando localmente
 
 Clone o projeto
@@ -64,8 +67,6 @@ Inicie o servidor
 Por fim, acesse a rota `/admin` para cadastrar o usuário admin no seu banco.
 Com ele você pode cadastrar outro usuários.
 
-## Protótipo
-🖥 - [iMail - Figma](https://www.figma.com/file/bskiksJ9hAyymGB2SIqfJh/i-Mail?node-id=0%3A1)
 ## Autores
 
 <img src="https://avatars.githubusercontent.com/u/86114583?v=4" alt="drawing" width="100"/>
