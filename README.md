@@ -58,14 +58,17 @@ Migre o banco
   yarn sequelize db:migrate
 ```
 
+Semeie o banco
+
+```bash
+  yarn sequelize db:seed
+```
+
 Inicie o servidor
 
 ```bash
   yarn start
 ```
-
-Por fim, acesse a rota `/admin` para cadastrar o usuário admin no seu banco.
-Com ele você pode cadastrar outro usuários.
 
 
 ## 👤 - Autor
