@@ -11,7 +11,7 @@ const { usuario } = require("./models");
 
 const app = express();
 var isLogged = false;
-var nome = '';
+var nome = "";
 
 app.set("view engine", "ejs");
 
@@ -27,23 +27,18 @@ app.use(
     secret: process.env.SECRET,
     algorithms: ["HS256"],
     getToken: (req) => req.cookies.token,
-  }).unless({ path: ["/","/admin", "/autenticar", "/logar", "/deslogar", "/sobre"] })
+  }).unless({
+    path: ["/", "/admin", "/autenticar", "/logar", "/deslogar", "/sobre"],
+  })
 );
 
 app.get("/", async function (req, res) {
-if(isLogged){
-
-  res.render("home", {nome});
-
-}else{
-
-  res.render("loggedFalse");
-
-}
-  
+  if (isLogged) {
+    res.render("home", { nome });
+  } else {
+    res.render("loggedFalse");
+  }
 });
-
-
 
 app.get("/autenticar", async function (req, res) {
   res.render("autenticar");
@@ -52,7 +47,6 @@ app.get("/autenticar", async function (req, res) {
 app.get("/sobre", async function (req, res) {
   res.render("sobre");
 });
-
 
 app.get("/usuarios", async function (req, res) {
   const retorna = await usuario.findAll();
@@ -71,21 +65,11 @@ app.get("/cadastrar", async function (req, res) {
 
 app.post("/cadastrar", async function (req, res) {
   const retorna = await usuario.create(req.body);
-  res.render('novoUsuario', {retorna});
-});
-
-app.get("/admin", async function (req, res) {
-  const retorna = await usuario.create({
-nome: 'admin',
-usuario: 'admin',
-senha: 'admin'
-  });
-  res.render('admin');
+  res.render("novoUsuario", { retorna });
 });
 
 app.get("/logar", async function (req, res) {
-
-  res.render('logar', {nome});
+  res.render("logar", { nome });
 });
 
 app.post("/logar", async function (req, res) {
@@ -93,34 +77,31 @@ app.post("/logar", async function (req, res) {
     where: { usuario: req.body.usuario },
   });
 
-  if(verificaUsuario != null){
-  if (
-    req.body.usuario == verificaUsuario.usuario &&
-    req.body.senha == verificaUsuario.senha
-  ) {
-    const id = 1;
-    const token = jwt.sign({ id }, process.env.SECRET, {
-      expiresIn: 3600, // expires in 1 hour
-    });
+  if (verificaUsuario != null) {
+    if (
+      req.body.usuario == verificaUsuario.usuario &&
+      req.body.senha == verificaUsuario.senha
+    ) {
+      const id = 1;
+      const token = jwt.sign({ id }, process.env.SECRET, {
+        expiresIn: 3600, // expires in 1 hour
+      });
 
-    res.cookie("token", token, { httpOnly: true });
-    isLogged = true;
-    nome = verificaUsuario.nome;
-    return res.render("logar", { nome });
+      res.cookie("token", token, { httpOnly: true });
+      isLogged = true;
+      nome = verificaUsuario.nome;
+      return res.render("logar", { nome });
+    }
+
+    res.status(500).json({ message: "Login inválido!" });
+  } else {
+    res.render("userError");
   }
-
-  res.status(500).json({ message: "Login inválido!" });
-
-}else{
-
-
-  res.render('userError')
-}
 });
 
 app.post("/deslogar", function (req, res) {
   res.cookie("token", null, { httpOnly: true });
-  res.render('deslogar')
+  res.render("deslogar");
   isLogged = false;
 });
 
