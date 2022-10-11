@@ -3,6 +3,7 @@ require("dotenv-safe").config();
 const jwt = require("jsonwebtoken");
 var { expressjwt: expressJWT } = require("express-jwt");
 const cors = require("cors");
+const nodemailer = require('nodemailer');
 
 var cookieParser = require("cookie-parser");
 
@@ -12,6 +13,7 @@ const { usuario } = require("./models");
 const app = express();
 var isLogged = false;
 var nome = "";
+var dataAtual = new Date();
 
 app.set("view engine", "ejs");
 
@@ -31,6 +33,20 @@ app.use(
     path: ["/", "/admin", "/autenticar", "/logar", "/deslogar", "/sobre"],
   })
 );
+
+
+let transporter = nodemailer.createTransport({
+host: process.env.MAIL_HOST,
+port: process.env.MAIL_PORT,
+secure: false,
+auth:{
+user: process.env.MAIL_USERNAME,
+pass: process.env.MAIL_PASSWORD
+
+
+}
+})
+
 
 app.get("/", async function (req, res) {
   if (isLogged) {
@@ -90,6 +106,25 @@ app.post("/logar", async function (req, res) {
       res.cookie("token", token, { httpOnly: true });
       isLogged = true;
       nome = verificaUsuario.nome;
+
+      transporter.sendMail({
+
+        from: "iMail Mailer <iMail@irddesign.com>",
+        to: "iguivinigamer@gmail.com",
+        subject: "Novo Login Detectado",
+        html: `<h3>Olá! O usuário ${nome} acabou de realizar login na plataforma</h3>
+        <br/>
+        <p><strong>Data:</strong>${dataAtual}</p>
+        
+        
+        `
+        
+        }).then(message =>{
+        console.log(message)
+        }).catch(err =>{
+          console.log(err)
+        })
+        
       return res.render("logar", { nome });
     }
 
