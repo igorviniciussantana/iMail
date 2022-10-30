@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 var { expressjwt: expressJWT } = require("express-jwt");
 const cors = require("cors");
 const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
 var cookieParser = require("cookie-parser");
 
