@@ -27,12 +27,12 @@
   <div class="linha2">
     <div class="item">
   <h2>Criado em:</h2>
-    <%= resultado.createdAt.toString().slice(0,10) %>
+    <%= resultado.createdAt.toLocaleString('pt-BR').slice(0,10) %>
 </div>
 
 <div class="item">
     <h2>Última atualização:</h2>
-    <%= resultado.updatedAt.toString().slice(0,10) %>
+    <%= resultado.updatedAt.toLocaleString('pt-BR').slice(0,10) %>
     </div>
   </div>
 
