@@ -4,7 +4,16 @@ const jwt = require("jsonwebtoken");
 var { expressjwt: expressJWT } = require("express-jwt");
 const cors = require("cors");
 const nodemailer = require('nodemailer');
+
+
+// CRIPTOGRAFIA
+
 const crypto = require('crypto');
+const CHAVE = process.env.KEY; // 32
+const IV = "5183666c72eec9e4"; // 16
+const ALGORITMO = "aes-256-cbc";
+const METODO_CRIPTOGRAFIA = 'hex';
+const METODO_DESCRIPTOGRAFIA = 'hex';
 
 var cookieParser = require("cookie-parser");
 
