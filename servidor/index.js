@@ -22,6 +22,12 @@ const encrypt = ((text) =>  {
   return encrypted;
 });
 
+const decrypt = ((text) => {
+  let decipher = crypto.createDecipheriv(ALGORITMO, CHAVE, IV);
+  let decrypted = decipher.update(text, METODO_DESCRIPTOGRAFIA, 'utf8');
+  return (decrypted + decipher.final('utf8'));
+});
+
 var cookieParser = require("cookie-parser");
 
 const express = require("express");
@@ -123,7 +129,7 @@ app.post("/logar", async function (req, res) {
   if (verificaUsuario != null) {
     if (
       req.body.usuario == verificaUsuario.usuario &&
-      req.body.senha == verificaUsuario.senha
+      req.body.senha == decrypt(verificaUsuario.senha)
     ) {
       const id = 1;
       const token = jwt.sign({ id }, process.env.SECRET, {
