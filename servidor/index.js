@@ -147,7 +147,7 @@ app.post("/logar", async function (req, res) {
         subject: "Novo Login Detectado",
         html: `<h3>Olá! O usuário ${nome} acabou de realizar login na plataforma</h3>
         <br/>
-        <p><strong>Data:</strong>${dataAtual}</p>
+        <p><strong>Data:</strong>${dataAtual.toLocaleString('pt-BR')}</p>
         
         
         `
