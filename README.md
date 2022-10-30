@@ -61,7 +61,7 @@ Migre o banco
 Semeie o banco
 
 ```bash
-  yarn sequelize db:seed
+  yarn sequelize db:seed:all
 ```
 
 Inicie o servidor
