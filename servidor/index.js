@@ -15,6 +15,13 @@ const ALGORITMO = "aes-256-cbc";
 const METODO_CRIPTOGRAFIA = 'hex';
 const METODO_DESCRIPTOGRAFIA = 'hex';
 
+const encrypt = ((text) =>  {
+  let cipher = crypto.createCipheriv(ALGORITMO, CHAVE, IV);
+  let encrypted = cipher.update(text, 'utf8', METODO_CRIPTOGRAFIA);
+  encrypted += cipher.final(METODO_CRIPTOGRAFIA);
+  return encrypted;
+});
+
 var cookieParser = require("cookie-parser");
 
 const express = require("express");
@@ -44,6 +51,7 @@ app.use(
   })
 );
 
+// MAILER
 
 let transporter = nodemailer.createTransport({
 host: process.env.MAIL_HOST,
@@ -57,6 +65,8 @@ pass: process.env.MAIL_PASSWORD
 }
 })
 
+
+//ROUTES
 
 app.get("/", async function (req, res) {
   if (isLogged) {
@@ -90,7 +100,14 @@ app.get("/cadastrar", async function (req, res) {
 });
 
 app.post("/cadastrar", async function (req, res) {
-  const retorna = await usuario.create(req.body);
+ 
+const inserir = {
+  usuario: req.body.usuario,
+  nome: req.body.nome,
+  senha: encrypt(req.body.senha)
+}
+
+  const retorna = await usuario.create(inserir);
   res.render("novoUsuario", { retorna });
 });
 
