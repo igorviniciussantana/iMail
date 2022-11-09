@@ -4,29 +4,9 @@ const jwt = require("jsonwebtoken");
 var { expressjwt: expressJWT } = require("express-jwt");
 const cors = require("cors");
 const nodemailer = require('nodemailer');
+const cripto = require('./cripto')
 
 
-// CRIPTOGRAFIA
-
-const crypto = require('crypto');
-const CHAVE = process.env.KEY; // 32
-const IV = "5183666c72eec9e4"; // 16
-const ALGORITMO = "aes-256-cbc";
-const METODO_CRIPTOGRAFIA = 'hex';
-const METODO_DESCRIPTOGRAFIA = 'hex';
-
-const encrypt = ((text) =>  {
-  let cipher = crypto.createCipheriv(ALGORITMO, CHAVE, IV);
-  let encrypted = cipher.update(text, 'utf8', METODO_CRIPTOGRAFIA);
-  encrypted += cipher.final(METODO_CRIPTOGRAFIA);
-  return encrypted;
-});
-
-const decrypt = ((text) => {
-  let decipher = crypto.createDecipheriv(ALGORITMO, CHAVE, IV);
-  let decrypted = decipher.update(text, METODO_DESCRIPTOGRAFIA, 'utf8');
-  return (decrypted + decipher.final('utf8'));
-});
 
 var cookieParser = require("cookie-parser");
 
@@ -75,6 +55,7 @@ pass: process.env.MAIL_PASSWORD
 //ROUTES
 
 app.get("/", async function (req, res) {
+
   if (isLogged) {
     res.render("home", { nome });
   } else {
@@ -110,7 +91,7 @@ app.post("/cadastrar", async function (req, res) {
 const inserir = {
   usuario: req.body.usuario,
   nome: req.body.nome,
-  senha: encrypt(req.body.senha)
+  senha: cripto.encrypt(req.body.senha)
 }
 
   const retorna = await usuario.create(inserir);
@@ -129,7 +110,7 @@ app.post("/logar", async function (req, res) {
   if (verificaUsuario != null) {
     if (
       req.body.usuario == verificaUsuario.usuario &&
-      req.body.senha == decrypt(verificaUsuario.senha)
+      req.body.senha == cripto.decrypt(verificaUsuario.senha)
     ) {
       const id = 1;
       const token = jwt.sign({ id }, process.env.SECRET, {
