@@ -3,8 +3,8 @@ require("dotenv-safe").config();
 const jwt = require("jsonwebtoken");
 var { expressjwt: expressJWT } = require("express-jwt");
 const cors = require("cors");
-const nodemailer = require('nodemailer');
-const cripto = require('./cripto')
+const cripto = require('./services/cripto')
+const transporter = require('./services/mailer')
 
 
 
@@ -37,19 +37,7 @@ app.use(
   })
 );
 
-// MAILER
 
-let transporter = nodemailer.createTransport({
-host: process.env.MAIL_HOST,
-port: process.env.MAIL_PORT,
-secure: false,
-auth:{
-user: process.env.MAIL_USERNAME,
-pass: process.env.MAIL_PASSWORD
-
-
-}
-})
 
 
 //ROUTES

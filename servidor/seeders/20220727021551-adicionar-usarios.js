@@ -1,5 +1,5 @@
 'use strict';
-const cripto = require('../cripto')
+const cripto = require('../services/cripto')
 
 module.exports = {
   async up (queryInterface, Sequelize) {
